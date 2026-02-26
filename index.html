@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tubarão das Profundezas</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    canvas { display: block; }
+  </style>
+</head>
+<body>
+
+<!-- Phaser 3 via CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/phaser/3.60.0/phaser.min.js"></script>
+
+<!-- Cenas do jogo -->
+<script src="scenes/Welcome.js"></script>
+<script src="scenes/GameScene.js"></script>
+<script src="scenes/GameOver.js"></script>
+
+<script>
+  // ============================================================
+  // Configuração principal do jogo Phaser
+  // Inclui as três cenas: Boas-vindas, Jogo e Game Over
+  // ============================================================
+  const config = {
+    type: Phaser.AUTO,
+    width: 800,
+    height: 600,
+    backgroundColor: '#001a33',
+    physics: {
+      default: 'arcade',
+      arcade: {
+        gravity: { y: 0 }, // Sem gravidade global (jogo subaquático)
+        debug: false
+      }
+    },
+    scene: [Welcome, GameScene, GameOver] // Ordem das cenas
+  };
+
+  // Inicializa o jogo
+  const game = new Phaser.Game(config);
+</script>
+
+</body>
+</html>
